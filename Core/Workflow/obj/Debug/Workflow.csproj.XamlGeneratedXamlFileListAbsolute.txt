@@ -1,0 +1,2 @@
+obj\Debug\CreditTransferFlow.g.xaml
+obj\Debug\Workflow_CreditTransferFlow_BeforeInitializeComponentHelper.txt
