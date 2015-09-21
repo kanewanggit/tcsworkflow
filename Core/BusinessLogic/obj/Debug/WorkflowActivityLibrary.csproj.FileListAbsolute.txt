@@ -1,5 +1,0 @@
-C:\Home\TCSWorkflow\Core\WorkflowActivityLibrary\bin\Debug\WorkflowActivityLibrary.dll
-C:\Home\TCSWorkflow\Core\WorkflowActivityLibrary\bin\Debug\WorkflowActivityLibrary.pdb
-C:\Home\TCSWorkflow\Core\WorkflowActivityLibrary\obj\Debug\WorkflowActivityLibrary.csprojResolveAssemblyReference.cache
-C:\Home\TCSWorkflow\Core\WorkflowActivityLibrary\obj\Debug\WorkflowActivityLibrary.dll
-C:\Home\TCSWorkflow\Core\WorkflowActivityLibrary\obj\Debug\WorkflowActivityLibrary.pdb

@@ -19,7 +19,8 @@ namespace WorkflowActivityLibrary.Activity
             var item = context.GetValue(ActivityOutput);
 
             var output = provider.SendEmail(dto);
-            item.Steps.Add(output);
+            if (output != null)
+                item.Steps.Add(output);
 
             context.SetValue(ActivityOutput, item);
 

@@ -1,3 +1,0 @@
-obj\Debug\_Workflow.g.cs
-obj\Debug\CreditTransferFlow.g.cs
-obj\Debug\Workflow_CreditTransferFlow_BeforeInitializeComponentHelper.cs

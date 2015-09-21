@@ -1,7 +1,0 @@
-C:\Home\TCSWorkflow\Core\CoreImplementation\bin\Debug\CoreImplementation.dll
-C:\Home\TCSWorkflow\Core\CoreImplementation\bin\Debug\CoreImplementation.pdb
-C:\Home\TCSWorkflow\Core\CoreImplementation\obj\Debug\CoreImplementation.dll
-C:\Home\TCSWorkflow\Core\CoreImplementation\obj\Debug\CoreImplementation.pdb
-C:\Home\TCSWorkflow\Core\CoreImplementation\bin\Debug\Base.dll
-C:\Home\TCSWorkflow\Core\CoreImplementation\bin\Debug\Base.pdb
-C:\Home\TCSWorkflow\Core\CoreImplementation\obj\Debug\CoreImplementation.csprojResolveAssemblyReference.cache

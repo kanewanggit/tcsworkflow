@@ -1,2 +1,0 @@
-CreditTransferFlow.g.xaml
-XamlStaticHelperNamespace._XamlStaticHelper

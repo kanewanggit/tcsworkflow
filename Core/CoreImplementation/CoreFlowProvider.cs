@@ -7,7 +7,7 @@ namespace CoreImplementation
     {
         public ActivityOutput SendEmail(EmailDto dto)
         {
-            return new ActivityOutput { Status = Base.Constant.Status.Sent, Successful = true, Message = "Core implementation" };
+            return null;
         }
     }
 }
