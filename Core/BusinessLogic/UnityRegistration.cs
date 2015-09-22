@@ -1,9 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
+using System.Web.UI;
 using Base.ActivityInterface;
+using Base.Dto;
 using CoreImplementation;
+using CoreImplementation.Validator;
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
+using FluentValidation;
 
 namespace WorkflowActivityLibrary
 {
@@ -28,6 +32,9 @@ namespace WorkflowActivityLibrary
 		    Container.RegisterTypes(AllClasses.FromAssemblies(assemblyList), WithMappings.FromMatchingInterface,
 		        WithName.Default,
 		        WithLifetime.ContainerControlled);  // default mapping - core implementation
+
+            // Register all validators
+            Container.RegisterType<IValidator<EmailDto>, EmailValidator>(new TransientLifetimeManager());
 
             // Load implementation from different running instance, could be differentiated by domain name
             // Overwrite Container in customization 
