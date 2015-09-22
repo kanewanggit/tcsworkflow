@@ -247,6 +247,10 @@
       <Project>{693cfa1e-b50f-4a5d-86e0-e4bfaed9bc9d}</Project>
       <Name>BusinessLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Core\CoreImplementation\CoreImplementation.csproj">
+      <Project>{8F2318E7-50C5-4C38-B212-E65874A481EC}</Project>
+      <Name>CoreImplementation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core\Workflow\Workflow.csproj">
       <Project>{99d16d43-8156-4d09-bf54-cccf61f8c167}</Project>
       <Name>Workflow</Name>
