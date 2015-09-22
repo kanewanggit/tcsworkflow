@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MbImplementation", "Extensi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreWeb", "CoreWeb\CoreWeb.csproj", "{F031B449-8440-44C9-AB9F-E1F4C4C44112}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Tests", "Tests\Web.Tests\Web.Tests.csproj", "{6A9CFC51-D0C0-418B-AABE-E42D20EEFA48}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreWeb.Tests", "Tests\CoreWeb.Tests\CoreWeb.Tests.csproj", "{6A9CFC51-D0C0-418B-AABE-E42D20EEFA48}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MbWeb", "Extension\MbWeb\MbWeb.csproj", "{73A21C0B-84AD-475C-BEEE-0716FF1AC1DF}"
 EndProject
