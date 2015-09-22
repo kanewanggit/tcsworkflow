@@ -134,7 +134,7 @@
       <Project>{99d16d43-8156-4d09-bf54-cccf61f8c167}</Project>
       <Name>Workflow</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Extension\MbImplementation\MbImplementation.csproj">
+    <ProjectReference Include="..\MbImplementation\MbImplementation.csproj">
       <Project>{3dd2cf0d-3c98-4c32-b505-13bca6b0a6c7}</Project>
       <Name>MbImplementation</Name>
     </ProjectReference>
