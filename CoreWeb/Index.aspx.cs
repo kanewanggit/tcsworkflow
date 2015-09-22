@@ -28,9 +28,7 @@ namespace CoreWeb
 
             var validator = ServiceLocator.Current.GetInstance<IValidator<EmailDto>>();
             var result = validator.Validate(dto);
-
-            // need to output something there
-
+            
             var flowInput = new WorkFlowInput()
             {
                 Email = dto,
