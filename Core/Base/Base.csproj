@@ -50,6 +50,7 @@
     <Compile Include="Dto\EmailDto.cs" />
     <Compile Include="Dto\FlowStatusDto.cs" />
     <Compile Include="Dto\WorkFlowInput.cs" />
+    <Compile Include="ManagerInterface\IEmailFlowManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

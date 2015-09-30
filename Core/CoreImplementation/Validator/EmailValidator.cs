@@ -7,8 +7,8 @@ namespace CoreImplementation.Validator
     {
         public EmailValidator()
         {
-            RuleFor(x => x.From)
-                .NotNull().NotEmpty().WithMessage("From must be entered");
+            RuleFor(x => x.To)
+                .NotEmpty().WithMessage("Recipient email address must be entered");
         }
     }
 }

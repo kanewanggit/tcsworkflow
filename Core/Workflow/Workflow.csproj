@@ -54,13 +54,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ActivityManager\ActivityManager.csproj">
+      <Project>{45c737b7-adaa-4e55-ae83-634b5ac7a265}</Project>
+      <Name>ActivityManager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Base\Base.csproj">
       <Project>{1c66f20c-5fed-40ac-ad3c-72ade186d381}</Project>
       <Name>Base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
-      <Project>{693cfa1e-b50f-4a5d-86e0-e4bfaed9bc9d}</Project>
-      <Name>BusinessLogic</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

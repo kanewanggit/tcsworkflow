@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
-using System.Web.UI;
 using Base.ActivityInterface;
 using Base.Dto;
+using BusinessLogic.Manager;
 using CoreImplementation;
 using CoreImplementation.Validator;
+using FluentValidation;
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
-using FluentValidation;
 
-namespace WorkflowActivityLibrary
+namespace BusinessLogic
 {
 	public class UnityRegistration
 	{
@@ -26,7 +26,8 @@ namespace WorkflowActivityLibrary
 			Container = new UnityContainer();
 		    var assemblyList = new List<Assembly> {
                 Assembly.GetAssembly(typeof (ICoreFlowProvider)), 
-                Assembly.GetAssembly(typeof (CoreFlowProvider))
+                Assembly.GetAssembly(typeof (CoreFlowProvider)),
+                Assembly.GetAssembly(typeof (EmailFlowManager))
             };
 
 		    Container.RegisterTypes(AllClasses.FromAssemblies(assemblyList), WithMappings.FromMatchingInterface,

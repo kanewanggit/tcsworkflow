@@ -1,5 +1,6 @@
 ﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="Workflow.CreditTransferFlow"
  xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:a="clr-namespace:ActivityManager;assembly=ActivityManager"
  xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
  xmlns:bd="clr-namespace:Base.Dto;assembly=Base"
  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -9,7 +10,6 @@
  xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
  xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
  xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
- xmlns:wa="clr-namespace:WorkflowActivityLibrary.Activity;assembly=WorkflowActivityLibrary"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="Result" Type="OutArgument(bd:FlowStatusDto)" />
@@ -32,21 +32,21 @@
       <AssemblyReference>Microsoft.CSharp</AssemblyReference>
       <AssemblyReference>System</AssemblyReference>
       <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Activities.DurableInstancing</AssemblyReference>
+      <AssemblyReference>System.Configuration</AssemblyReference>
       <AssemblyReference>System.Core</AssemblyReference>
       <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Runtime.DurableInstancing</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Web</AssemblyReference>
       <AssemblyReference>System.Xaml</AssemblyReference>
       <AssemblyReference>System.Xml</AssemblyReference>
       <AssemblyReference>System.Xml.Linq</AssemblyReference>
-      <AssemblyReference>WorkflowActivityLibrary</AssemblyReference>
       <AssemblyReference>Base</AssemblyReference>
-      <AssemblyReference>System.Activities.DurableInstancing</AssemblyReference>
-      <AssemblyReference>System.Web</AssemblyReference>
-      <AssemblyReference>System.Configuration</AssemblyReference>
-      <AssemblyReference>System.Drawing</AssemblyReference>
-      <AssemblyReference>System.Runtime.DurableInstancing</AssemblyReference>
+      <AssemblyReference>ActivityManager</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
       <AssemblyReference>Workflow</AssemblyReference>
     </sco:Collection>
@@ -59,124 +59,123 @@
     </Flowchart.Variables>
     <Flowchart.StartNode>
       <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_1">
-        <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:WorkflowViewState.IdRef="StateMachine_1">
-          <State x:Name="__ReferenceID3" DisplayName="SubmitRequest" sap2010:WorkflowViewState.IdRef="State_1">
-            <State.Entry>
-              <Assign sap2010:WorkflowViewState.IdRef="Assign_1">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="bd:EmailDto">
-                    <mca:CSharpReference x:TypeArguments="bd:EmailDto">Email</mca:CSharpReference>
-                  </OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="bd:EmailDto">
-                    <mca:CSharpValue x:TypeArguments="bd:EmailDto">Request.Email</mca:CSharpValue>
-                  </InArgument>
-                </Assign.Value>
-              </Assign>
-            </State.Entry>
-            <State.Transitions>
-              <Transition DisplayName="T1" sap2010:WorkflowViewState.IdRef="Transition_1">
-                <Transition.Trigger>
-                  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
-                    <wa:NeedConfirmation sap2010:WorkflowViewState.IdRef="NeedConfirmation_1">
-                      <wa:NeedConfirmation.IsSkip>
-                        <OutArgument x:TypeArguments="x:Boolean">
-                          <mca:CSharpReference x:TypeArguments="x:Boolean">IsSkip</mca:CSharpReference>
-                        </OutArgument>
-                      </wa:NeedConfirmation.IsSkip>
-                    </wa:NeedConfirmation>
-                    <If sap2010:WorkflowViewState.IdRef="If_1">
-                      <If.Condition>
-                        <InArgument x:TypeArguments="x:Boolean">
-                          <mca:CSharpValue x:TypeArguments="x:Boolean">!IsSkip</mca:CSharpValue>
-                        </InArgument>
-                      </If.Condition>
-                      <If.Then>
-                        <wa:WaitForResponse x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="WaitForResponse`1_1" ResponseName="WaitForConfirmation" />
-                      </If.Then>
-                    </If>
-                  </Sequence>
-                </Transition.Trigger>
-                <Transition.To>
-                  <State x:Name="__ReferenceID0" DisplayName="Confirm" sap2010:WorkflowViewState.IdRef="State_2">
-                    <State.Entry>
-                      <wa:ConfirmEmail sap2010:WorkflowViewState.IdRef="ConfirmEmail_1">
-                        <wa:ConfirmEmail.ActivityOutput>
-                          <OutArgument x:TypeArguments="bd:FlowStatusDto">
-                            <mca:CSharpReference x:TypeArguments="bd:FlowStatusDto">FlowOutput</mca:CSharpReference>
-                          </OutArgument>
-                        </wa:ConfirmEmail.ActivityOutput>
-                        <wa:ConfirmEmail.Dto>
-                          <InArgument x:TypeArguments="bd:EmailDto">
-                            <mca:CSharpValue x:TypeArguments="bd:EmailDto">Email</mca:CSharpValue>
+        <StateMachine sap2010:WorkflowViewState.IdRef="StateMachine_1">
+          <StateMachine.InitialState>
+            <State x:Name="__ReferenceID0" DisplayName="SubmitRequest" sap2010:WorkflowViewState.IdRef="State_1">
+              <State.Entry>
+                <Assign sap2010:WorkflowViewState.IdRef="Assign_1">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="bd:EmailDto">
+                      <mca:CSharpReference x:TypeArguments="bd:EmailDto">Email</mca:CSharpReference>
+                    </OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="bd:EmailDto">
+                      <mca:CSharpValue x:TypeArguments="bd:EmailDto">Request.Email</mca:CSharpValue>
+                    </InArgument>
+                  </Assign.Value>
+                </Assign>
+              </State.Entry>
+              <State.Transitions>
+                <Transition DisplayName="T1" sap2010:WorkflowViewState.IdRef="Transition_1">
+                  <Transition.Trigger>
+                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+                      <a:NeedConfirmation IsSkip="{x:Null}" sap2010:WorkflowViewState.IdRef="NeedConfirmation_3" />
+                      <If sap2010:WorkflowViewState.IdRef="If_1">
+                        <If.Condition>
+                          <InArgument x:TypeArguments="x:Boolean">
+                            <mca:CSharpValue x:TypeArguments="x:Boolean">!IsSkip</mca:CSharpValue>
                           </InArgument>
-                        </wa:ConfirmEmail.Dto>
-                      </wa:ConfirmEmail>
-                    </State.Entry>
-                    <State.Transitions>
-                      <Transition DisplayName="T2" sap2010:WorkflowViewState.IdRef="Transition_3">
-                        <Transition.To>
-                          <State x:Name="__ReferenceID1" DisplayName="Send" sap2010:WorkflowViewState.IdRef="State_3">
-                            <State.Entry>
-                              <wa:SendEmail sap2010:WorkflowViewState.IdRef="SendEmail_1">
-                                <wa:SendEmail.ActivityOutput>
-                                  <InOutArgument x:TypeArguments="bd:FlowStatusDto">
-                                    <mca:CSharpReference x:TypeArguments="bd:FlowStatusDto">FlowOutput</mca:CSharpReference>
-                                  </InOutArgument>
-                                </wa:SendEmail.ActivityOutput>
-                                <wa:SendEmail.Dto>
-                                  <InArgument x:TypeArguments="bd:EmailDto">
-                                    <mca:CSharpValue x:TypeArguments="bd:EmailDto">Email</mca:CSharpValue>
-                                  </InArgument>
-                                </wa:SendEmail.Dto>
-                              </wa:SendEmail>
-                            </State.Entry>
-                            <State.Transitions>
-                              <Transition DisplayName="T3" sap2010:WorkflowViewState.IdRef="Transition_2">
-                                <Transition.To>
-                                  <State x:Name="__ReferenceID2" DisplayName="FinalState" sap2010:WorkflowViewState.IdRef="State_4" IsFinal="True">
-                                    <State.Entry>
-                                      <Assign sap2010:WorkflowViewState.IdRef="Assign_2">
-                                        <Assign.To>
-                                          <OutArgument x:TypeArguments="bd:FlowStatusDto">
-                                            <mca:CSharpReference x:TypeArguments="bd:FlowStatusDto">Result</mca:CSharpReference>
-                                          </OutArgument>
-                                        </Assign.To>
-                                        <Assign.Value>
-                                          <InArgument x:TypeArguments="bd:FlowStatusDto">
-                                            <mca:CSharpValue x:TypeArguments="bd:FlowStatusDto">FlowOutput</mca:CSharpValue>
-                                          </InArgument>
-                                        </Assign.Value>
-                                      </Assign>
-                                    </State.Entry>
-                                  </State>
-                                </Transition.To>
-                              </Transition>
-                            </State.Transitions>
-                          </State>
-                        </Transition.To>
-                      </Transition>
-                    </State.Transitions>
-                  </State>
-                </Transition.To>
-              </Transition>
-            </State.Transitions>
-          </State>
+                        </If.Condition>
+                        <If.Then>
+                          <a:WaitForResponse x:TypeArguments="x:Int32" ResponseName="WaitForConfirmation" sap2010:WorkflowViewState.IdRef="WaitForResponse`1_3" />
+                        </If.Then>
+                      </If>
+                    </Sequence>
+                  </Transition.Trigger>
+                  <Transition.To>
+                    <State x:Name="__ReferenceID1" DisplayName="Confirm" sap2010:WorkflowViewState.IdRef="State_2">
+                      <State.Entry>
+                        <a:ConfirmEmail>
+                          <a:ConfirmEmail.ActivityOutput>
+                            <OutArgument x:TypeArguments="bd:FlowStatusDto">
+                              <mca:CSharpReference x:TypeArguments="bd:FlowStatusDto">FlowOutput</mca:CSharpReference>
+                            </OutArgument>
+                          </a:ConfirmEmail.ActivityOutput>
+                          <a:ConfirmEmail.Dto>
+                            <InArgument x:TypeArguments="bd:EmailDto">
+                              <mca:CSharpValue x:TypeArguments="bd:EmailDto">Email</mca:CSharpValue>
+                            </InArgument>
+                          </a:ConfirmEmail.Dto>
+                          <sap2010:WorkflowViewState.IdRef>ConfirmEmail_3</sap2010:WorkflowViewState.IdRef>
+                        </a:ConfirmEmail>
+                      </State.Entry>
+                      <State.Transitions>
+                        <Transition DisplayName="T2" sap2010:WorkflowViewState.IdRef="Transition_3">
+                          <Transition.To>
+                            <State x:Name="__ReferenceID2" DisplayName="Send" sap2010:WorkflowViewState.IdRef="State_3">
+                              <State.Entry>
+                                <a:SendEmail>
+                                  <a:SendEmail.ActivityOutput>
+                                    <InOutArgument x:TypeArguments="bd:FlowStatusDto">
+                                      <mca:CSharpReference x:TypeArguments="bd:FlowStatusDto">FlowOutput</mca:CSharpReference>
+                                    </InOutArgument>
+                                  </a:SendEmail.ActivityOutput>
+                                  <a:SendEmail.Dto>
+                                    <InArgument x:TypeArguments="bd:EmailDto">
+                                      <mca:CSharpValue x:TypeArguments="bd:EmailDto">Email</mca:CSharpValue>
+                                    </InArgument>
+                                  </a:SendEmail.Dto>
+                                  <sap2010:WorkflowViewState.IdRef>SendEmail_3</sap2010:WorkflowViewState.IdRef>
+                                </a:SendEmail>
+                              </State.Entry>
+                              <State.Transitions>
+                                <Transition DisplayName="T3" sap2010:WorkflowViewState.IdRef="Transition_2">
+                                  <Transition.To>
+                                    <State x:Name="__ReferenceID3" DisplayName="FinalState" sap2010:WorkflowViewState.IdRef="State_4" IsFinal="True">
+                                      <State.Entry>
+                                        <Assign sap2010:WorkflowViewState.IdRef="Assign_2">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="bd:FlowStatusDto">
+                                              <mca:CSharpReference x:TypeArguments="bd:FlowStatusDto">Result</mca:CSharpReference>
+                                            </OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="bd:FlowStatusDto">
+                                              <mca:CSharpValue x:TypeArguments="bd:FlowStatusDto">FlowOutput</mca:CSharpValue>
+                                            </InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                      </State.Entry>
+                                    </State>
+                                  </Transition.To>
+                                </Transition>
+                              </State.Transitions>
+                            </State>
+                          </Transition.To>
+                        </Transition>
+                      </State.Transitions>
+                    </State>
+                  </Transition.To>
+                </Transition>
+              </State.Transitions>
+            </State>
+          </StateMachine.InitialState>
           <x:Reference>__ReferenceID0</x:Reference>
           <x:Reference>__ReferenceID1</x:Reference>
           <x:Reference>__ReferenceID2</x:Reference>
+          <x:Reference>__ReferenceID3</x:Reference>
         </StateMachine>
       </FlowStep>
     </Flowchart.StartNode>
     <x:Reference>__ReferenceID4</x:Reference>
-    <sads:DebugSymbol.Symbol>dzlDOlxIb21lXFRDU1dvcmtmbG93XENvcmVcV29ya2Zsb3dcQ3JlZGl0VHJhbnNmZXJGbG93LnhhbWwYNgOuAQ8CAQE+CakBGAIBAj8LpQETAgEyZhOhARsCASJ4G50BIwIBEooBI5kBKwIBA0EPTBgCAURRE2MeAgE0aBdzKQIBJXofhQEuAgEVjAEnlwEwAgEFSRVJYwIBS0QVRGMCAUVSFVgrAgE9WRViGgIBNXAdcGMCASxrHWt1AgEmggElggFrAgEcfSV9fQIBFpQBLZQBfQIBDI8BLY8BgQECAQZVG1VoAgE+XBtcYQIBNmAZYKIBAgE8</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dzlDOlxIb21lXFRDU1dvcmtmbG93XENvcmVcV29ya2Zsb3dcQ3JlZGl0VHJhbnNmZXJGbG93LnhhbWwXNgOtAQ8CAQE+CagBGAIBAkANogEVAgEyYRWeAR0CASJ0HZoBJQIBEocBJZYBLQIBA0IRTRoCAT5SFV4gAgE0YxlvKgIBJXYhggEvAgEViQEplAEyAgEFShdKZQIBRUUXRWUCAT9TF1N0AgE9VBddHAIBNWsfa2UCASxmH2Z3AgEmfid+bQIBHHkneX8CARaRAS+RAX8CAQyMAS+MAYMBAgEGVx1XYwIBNlsbW6MBAgE8</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
       <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="242,62" />
-      <sap2010:ViewStateData Id="NeedConfirmation_1" sap:VirtualizedContainerService.HintSize="464,22" />
-      <sap2010:ViewStateData Id="WaitForResponse`1_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="NeedConfirmation_3" sap:VirtualizedContainerService.HintSize="464,22" />
+      <sap2010:ViewStateData Id="WaitForResponse`1_3" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="464,210" />
       <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="486,396">
         <sap:WorkflowViewStateService.ViewState>
@@ -185,10 +184,10 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="ConfirmEmail_1" sap:VirtualizedContainerService.HintSize="200,22" />
-      <sap2010:ViewStateData Id="SendEmail_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="ConfirmEmail_3" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="SendEmail_3" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="242,62" />
-      <sap2010:ViewStateData Id="State_4" sap:VirtualizedContainerService.HintSize="326,223">
+      <sap2010:ViewStateData Id="State_4" sap:VirtualizedContainerService.HintSize="114,61">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">450,22.5</av:Point>
@@ -206,7 +205,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="State_3" sap:VirtualizedContainerService.HintSize="114,61">
+      <sap2010:ViewStateData Id="State_3" sap:VirtualizedContainerService.HintSize="326,468">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">293,189.5</av:Point>

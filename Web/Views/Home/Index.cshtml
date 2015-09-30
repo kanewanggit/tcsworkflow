@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Views/Shared/DefaultLayout.cshtml";
+}
+
+@model Base.Dto.EmailDto
+
+@using (Html.BeginForm("InitFlow", "Home"))
+{
+    <h2>Email Flow Example</h2>
+
+    <div style="color:red;">
+        @Html.ValidationSummary(false, "Please correct the following errors:")
+    </div>
+    
+    <div class="field">
+        <label class="text-label email-label">Email Address: </label>
+        @Html.TextBoxFor(model => model.To, new {@class = ""})
+        @Html.ValidationMessageFor(model => model.To)
+    </div>
+
+    <div class="field">
+        <label class="text-label email-label">Sender</label>
+        @Html.TextBoxFor(model => model.From, new { @class = "" })
+    </div>
+
+    <div class="field">
+        <label class="text-label email-label">Subject</label>
+        @Html.TextBoxFor(model => model.Subject, new { @class = "" })
+        @Html.ValidationMessageFor(model => model.Subject)
+    </div>
+
+    <div class="field">
+        <label class="text-label email-label">Content</label>
+        @Html.TextAreaFor(model => model.Content, 4, 80, new { @class = "" })
+    </div>
+
+    <input type="submit" name="submit" value="Run Flow"/>
+}
+
+
